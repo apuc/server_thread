@@ -3,6 +3,9 @@ from http.server import HTTPServer
 
 
 class ServerThread(threading.Thread):
+
+    handlerDto = False
+
     def __init__(self, *args, **kwargs):
         super(ServerThread, self).__init__(*args, **kwargs)
         self.deamon = True

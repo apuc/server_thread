@@ -1,51 +1,46 @@
 import mimetypes
 import os
-from include.ServerThread import st
+import socketserver
+
+from include.ServerThread import st, stDTO, stPool, stHandlerDTO, stRequestHandler
 from http.server import HTTPServer, BaseHTTPRequestHandler  # Python 3
 
 
-class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
 
-    def do_GET(self):
-        basePath = 'site/'
-        try:
-            if self.path in ("", "/"):
-                filepath = "html/index.html"
-            else:
-                filepath = self.path.lstrip("/")
-
-            finalPath = basePath + filepath
-            f = open(os.path.join('.', finalPath), "rb")
-
-        except IOError:
-            self.send_error(404, 'File Not Found: %s ' % finalPath)
-
-        else:
-            self.send_response(200)
-
-            # this part handles the mimetypes for you.
-            mimetype, _ = mimetypes.guess_type(finalPath)
-            self.send_header('Content-type', mimetype)
-            self.end_headers()
-            for s in f:
-                self.wfile.write(s)
-
-
-severT = st.ServerThread()
-severT.createServer(8181, SimpleHTTPRequestHandler)
 
 
 def up():
     severT.start()
+    severT2.start()
     print('starting server on port {}'.format(severT.server.server_port))
+    print('starting server on port {}'.format(severT2.server.server_port))
 
 
 def down():
     severT.stop()
+    severT2.stop()
     print('stopping server on port {}'.format(severT.server.server_port))
+    print('stopping server on port {}'.format(severT2.server.server_port))
 
 
 if __name__ == "__main__":
+    severT = st.ServerThread()
+    severT2 = st.ServerThread()
+
+    severT.createServer(8282, stRequestHandler.RequestHandler)
+    severT2.createServer(8383, stRequestHandler.RequestHandler)
+
+    severT.server.handlerDto = stHandlerDTO.handlerDTO(rootPath='/var/www/')
+    severT2.server.handlerDto = stHandlerDTO.handlerDTO(rootPath='/var/www2/')
+
+    dto = stDTO.Messenger(id=severT.getName(), thread=severT)
+    dto2 = stDTO.Messenger(id=severT2.getName(), thread=severT2)
+
+    pool = stPool.Pool()
+
+    pool.add(dto)
+    pool.add(dto2)
+
     up()
     stopS = input('Остановить?')
     down()
