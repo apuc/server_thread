@@ -2,7 +2,7 @@ import mimetypes
 import os
 import socketserver
 
-from include.ServerThread import st, stDTO, stPool, stHandlerDTO, stRequestHandler
+from include.ServerThread import st, stDTO, stPool, stHandlerDTO, stRequestHandler, stDesign
 from http.server import HTTPServer, BaseHTTPRequestHandler  # Python 3
 
 
