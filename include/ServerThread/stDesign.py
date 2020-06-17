@@ -1,6 +1,8 @@
 import sys
 
 from PyQt5 import QtWidgets
+from PyQt5.QtWidgets import QTableWidgetItem
+
 from design.main import Ui_MainWindow
 
 
@@ -21,5 +23,10 @@ class Design(QtWidgets.QMainWindow, Ui_MainWindow):
 
     def createDesign(self):
         window = Design()  # Создаём объект класса ExampleApp
+        window.serverTableList.setHorizontalHeaderLabels(["Имя", "Путь"])
+        window.serverTableList.setColumnCount(2)
+        window.serverTableList.setRowCount(2)
+        window.serverTableList.setItem(0, 0, QTableWidgetItem("Text in column 1"))
+        window.serverTableList.resizeColumnsToContents()
         window.show()  # Показываем окно
         self.app.exec_()  # и запускаем приложение
