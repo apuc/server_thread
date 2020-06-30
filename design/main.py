@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'design/main.ui'
+# Form implementation generated from reading ui file 'main.ui'
 #
-# Created by: PyQt5 UI code generator 5.14.0
+# Created by: PyQt5 UI code generator 5.12.3
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -26,9 +26,9 @@ class Ui_MainWindow(object):
         self.tableLabel.setObjectName("tableLabel")
         self.verticalLayout.addWidget(self.tableLabel)
         self.serverTableList = QtWidgets.QTableWidget(self.verticalLayoutWidget)
+        self.serverTableList.setRowCount(0)
+        self.serverTableList.setColumnCount(3)
         self.serverTableList.setObjectName("serverTableList")
-        self.serverTableList.setColumnCount(2)
-        self.serverTableList.setRowCount(2)
         self.verticalLayout.addWidget(self.serverTableList)
         self.horizontalLayoutWidget = QtWidgets.QWidget(self.centralwidget)
         self.horizontalLayoutWidget.setGeometry(QtCore.QRect(9, 279, 361, 51))
@@ -36,12 +36,12 @@ class Ui_MainWindow(object):
         self.horizontalLayout = QtWidgets.QHBoxLayout(self.horizontalLayoutWidget)
         self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout.setObjectName("horizontalLayout")
-        self.createBtn = QtWidgets.QPushButton(self.horizontalLayoutWidget)
-        self.createBtn.setObjectName("createBtn")
-        self.horizontalLayout.addWidget(self.createBtn)
-        self.deleteBtn = QtWidgets.QPushButton(self.horizontalLayoutWidget)
-        self.deleteBtn.setObjectName("deleteBtn")
-        self.horizontalLayout.addWidget(self.deleteBtn)
+        self.startBtn = QtWidgets.QPushButton(self.horizontalLayoutWidget)
+        self.startBtn.setObjectName("startBtn")
+        self.horizontalLayout.addWidget(self.startBtn)
+        self.stopBtn = QtWidgets.QPushButton(self.horizontalLayoutWidget)
+        self.stopBtn.setObjectName("stopBtn")
+        self.horizontalLayout.addWidget(self.stopBtn)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 379, 22))
@@ -58,5 +58,5 @@ class Ui_MainWindow(object):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.tableLabel.setText(_translate("MainWindow", "TextLabel"))
-        self.createBtn.setText(_translate("MainWindow", "Добавить"))
-        self.deleteBtn.setText(_translate("MainWindow", "Удалить"))
+        self.startBtn.setText(_translate("MainWindow", "Пуск"))
+        self.stopBtn.setText(_translate("MainWindow", "Стоп"))

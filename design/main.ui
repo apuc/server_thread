@@ -32,7 +32,17 @@
       </widget>
      </item>
      <item>
-      <widget class="QTableWidget" name="serverTableList"/>
+      <widget class="QTableWidget" name="serverTableList">
+       <property name="rowCount">
+        <number>0</number>
+       </property>
+       <property name="columnCount">
+        <number>3</number>
+       </property>
+       <column/>
+       <column/>
+       <column/>
+      </widget>
      </item>
     </layout>
    </widget>
@@ -47,16 +57,16 @@
     </property>
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
-      <widget class="QPushButton" name="createBtn">
+      <widget class="QPushButton" name="startBtn">
        <property name="text">
-        <string>Добавить</string>
+        <string>Пуск</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="deleteBtn">
+      <widget class="QPushButton" name="stopBtn">
        <property name="text">
-        <string>Удалить</string>
+        <string>Стоп</string>
        </property>
       </widget>
      </item>

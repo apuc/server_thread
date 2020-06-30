@@ -1,0 +1,12 @@
+[
+    {
+        "id": "nepaketniki",
+        "path": "/home/kirill/js/nepaketniki/",
+        "port": "8282"
+    },
+    {
+        "id": "test",
+        "path": "/home/kirill/js/test/",
+        "port": 8383
+    }
+]
